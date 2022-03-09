@@ -136,6 +136,10 @@ there are two main options to visualize your results:
   Paraview is a free visualization software provided by Kitware. It has a flexible GUI which will
   allow you to visualize your results through time and space and output results to videos or image files.
 
+- SEACAS \\
+  The SEACAS library, obtainable from https://github.com/gsjaardema/seacas, offers Python wrappers to examine
+  Exodus results. It can also convert Exodus files to a MATLAB format.
+
 - chigger and python VTK libraries \\
   Chigger is an in-house python library used to make highly customizable visualization scripts. It lets you adjust
   visualization parameters such as the angle, the pixel count, the positions of the objects and easily generate outputs
