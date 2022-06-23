@@ -2,7 +2,7 @@
 
 The three different models run with Picard iterations until all the variables reach a steady-state condition. An automatic steady-state detection algorithm is used to stop the calculations when the residual changes are below a specified tolerance.
 
-!media /pbmr/PBMR400NKResults.png
+!media /htr10/htr-10-with-vessel.png
     style=width:70%
     id=NKResults
     caption=Fast flux, thermal flux, and power density results from the Griffin PBMR 400 model.
