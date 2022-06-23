@@ -1,6 +1,6 @@
-# Pebble Bed Modular Reactor (PBMR) Model Results
+# HTR-10 Griffin Neutronics Model Results
 
-The three different models run with Picard iterations until all the variables reach a steady-state condition. An automatic steady-state detection algorithm is used to stop the calculations when the residual changes are below a specified tolerance.
+Testing this sucker
 
 !media /htr10/htr-10-with-vessel.png
     style=width:70%
@@ -8,6 +8,15 @@ The three different models run with Picard iterations until all the variables re
     caption=Fast flux, thermal flux, and power density results from the Griffin PBMR 400 model.
 
 The two-dimensional flux and power density profiles are computed by Griffin and are shown in [NKResults]. Griffin's results match the physical intuition for PBR's with the fast flux concentrated in the top region where the fuel is cool and the thermal flux reaching its maximum in the central graphite reflector close to the bed. The power density mimics the thermal flux profile, reaching its peak at the top left of the pebble bed, decreasing toward the center of the bed annulus, and increasing again close to the side reflector due to the moderating effect.
+
+!table id=fuel_salt_properties caption=Thermophysical properties of the fuel salt.
+|   |   | Unit  | LiF-BeF$_4$-ZrF$_4$-UF$_4$  |
+| :- | :- | :- | :- |
+| Melting temperature | $T_{melt}$ | $K$ | $722.15$  |
+| Density | $\rho$ | $kg/m^3$  | $2553.3-0.562\bullet T$ |
+| Dynamic viscosity | $\mu$ | $Pa\bullet s$ | $8.4\times 10^{-5} exp(4340/T)$ |
+| Thermal conductivity | $k$ | $W/(m\bullet K)$ | $1.0$ |
+| Specific heat capacity | $c_p$ | $J/(kg\bullet K)$ | $2009.66$ |
 
 !media /pbmr/PBMR400THResults.png
     style=width:70%
