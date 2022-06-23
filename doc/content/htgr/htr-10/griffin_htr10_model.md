@@ -1,4 +1,4 @@
-# HTR-10 Griffin neutronics model
+# HTR-10 Griffin Neutronics Model
 
 *Contact: Javier Ortensi, Javier.Ortensi@inl.gov
 

@@ -1,13 +1,19 @@
-# HTR-10 Griffin Neutronics Model Results
+# HTR-10 Griffin Neutronics Results
 
-Testing this sucker
+This section looks at the various results carried out by Griffin for various HTR-10 calculations. The two main input files are the *htr-10-critical.i* and the *htr-10-full.i* which are documented in detail in the Griffin Neutronics Model Section.  
 
-!media /htr10/htr-10-with-vessel.png
-    style=width:70%
-    id=NKResults
-    caption=Fast flux, thermal flux, and power density results from the Griffin PBMR 400 model.
 
-The two-dimensional flux and power density profiles are computed by Griffin and are shown in [NKResults]. Griffin's results match the physical intuition for PBR's with the fast flux concentrated in the top region where the fuel is cool and the thermal flux reaching its maximum in the central graphite reflector close to the bed. The power density mimics the thermal flux profile, reaching its peak at the top left of the pebble bed, decreasing toward the center of the bed annulus, and increasing again close to the side reflector due to the moderating effect.
+## Running an Input File
+
+If the user has access to Griffin built upon a working Moose Framework the following command from the shell prompt will execute the input file. 
+
+```language=bash
+
+/projects/griffin/griffin-opt -i htr-10-critical.i
+
+```
+
+## *Initial Critical* Core Results 
 
 !table id=fuel_salt_properties caption=Thermophysical properties of the fuel salt.
 |   |   | Unit  | LiF-BeF$_4$-ZrF$_4$-UF$_4$  |
