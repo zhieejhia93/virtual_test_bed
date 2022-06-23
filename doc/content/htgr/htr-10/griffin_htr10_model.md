@@ -14,9 +14,9 @@ primarily characterized by its inherent safety features.
 The reactor geometry is depicted in [htr10_geom].
 
 !media /htr10/htr-10-with-vessel.png
-    style=width:80%
-    id=htr10geom
-    caption=HTR-10 geometry with vessel [!citep](IRPhEP).
+       style=width:80%
+       id=htr10geom
+       caption=HTR-10 geometry with vessel [!citep](IRPhEP).
 
 The following discussion of the reactor geometry and the benchmark 
 based thereon are taken from [!citep](IRPhEP). 
