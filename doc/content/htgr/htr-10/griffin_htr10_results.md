@@ -1,6 +1,8 @@
 # HTR-10 Griffin Neutronics Results
 
-This section looks at the various results carried out by Griffin for various HTR-10 calculations. The two main input files are the *htr-10-critical.i* and the *htr-10-full.i* which are documented in detail in the Griffin Neutronics Model Section.  
+*Contact: Javier Ortensi, Javier.Ortensi@inl.gov*
+
+This section is a short summary of the results section of [!citep](HTR-10Benchmark) and looks at the various results carried out by Griffin for various HTR-10 calculations. The two main input files are the *htr-10-critical.i* and the *htr-10-full.i* which are documented in detail in the Griffin Neutronics Model Section.  
 
 
 ## Running an Input File
@@ -15,21 +17,28 @@ If the user has access to Griffin built upon a working Moose Framework the follo
 
 ## *Initial Critical* Core Results 
 
-!table id=fuel_salt_properties caption=Thermophysical properties of the fuel salt.
-|   |   | Unit  | LiF-BeF$_4$-ZrF$_4$-UF$_4$  |
+The first set of results for this model deal with the *htr-10-critical.i* input file which is the initial criticality benchmark. Table 1 summarizes the results of Griffin using tensor diffusion coefficients (TDC) and super homogenization (SPH) compared against MCNP and Serpent using ENDFB-VI and Serpent using ENDFB-VII.r1. As can be seen in the table below, Griffin matches with the accepted Serpent solution very well. 
+
+!table id=critical_eigven_values caption=Eigenvalues computed with different codes for the initial critical configuration. (MCNP results obtained from [!citep](IRPhEP))
+| Code  | keff  | uncertainty rel. error (pcm)  |
 | :- | :- | :- | :- |
-| Melting temperature | $T_{melt}$ | $K$ | $722.15$  |
-| Density | $\rho$ | $kg/m^3$  | $2553.3-0.562\bullet T$ |
-| Dynamic viscosity | $\mu$ | $Pa\bullet s$ | $8.4\times 10^{-5} exp(4340/T)$ |
-| Thermal conductivity | $k$ | $W/(m\bullet K)$ | $1.0$ |
-| Specific heat capacity | $c_p$ | $J/(kg\bullet K)$ | $2009.66$ |
+| MCNP (ENDFB-VI)  | 1.01190 | +/- 21 | 
+| Serpent (ENDFB-VI) | 1.01025 | +/- 5.1 |
+| Serpent (ENDFB-VII.r1) | 1.00023 | +/- 2.3 |
+| Griffin TDC-SPH-Diffusion | 1.00089 | 67.3 |
 
-!media /pbmr/PBMR400THResults.png
-    style=width:70%
-    id=THResults
-    caption=Pressure drop, fluid temperature, and solid temperature results from the Pronghorn PBMR 400 model. Streamlines are shown in white to indicate helium flow.
+Additionally, the flux distribution in the critical core is plotted in below. The effect of the upper cavity is clearly visible as the flux is almost flat within this region. The thermal flux peaks in the bottom conus are also visible.
+ 
+!media /htr10/flux_critical_core.png
+    style=width:80%
+    id=htr10_flux
+    caption=Flux distribution in the critical core (axial centerline) [!citep](HTR-10Benchmark).
 
-The steady-state helium pressure, temperature, and velocity streamlines are shown in [THResults] along with the graphite temperature. The helium temperature increases once it enters into the pebble bed where power is generated. The spatial temperature distribution shows a temperature peak of ~1300K close to the bottom center of the core. The streamlines show how most of the helium flows directly into the bed, with just a small amount flowing into the top cavity. Helim originating from different radial positions in the core mixes in the outlet plenum to produce the average helium outlet temperature. In normal operation, most of the heat generated in the pebble bed is removed by the helium flow. However, the central reflector graphite has no active cooling (this is a benchmark simplification, in reality active cooling is provided): therefore, its temperature is at least 500K higher than the rest of the graphite in the core.
+## *Full Core* Results
+
+For the *Full Core* case, there are a multitude of different cross section and equivalence libraries that can be switched out in the *htr-10-full.i* in order to model the full htr-10 reactor at different temperatures and rod positions.  
+
+One of the first problems to benchmark against
 
 After the steady-state calculations, a Pressurized Loss of Forced Cooling (PLOFC) is performed using the following event sequence:
 

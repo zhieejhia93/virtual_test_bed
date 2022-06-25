@@ -1,6 +1,6 @@
 # HTR-10 Griffin Neutronics Model
 
-*Contact: Javier Ortensi, Javier.Ortensi@inl.gov
+*Contact: Javier Ortensi, Javier.Ortensi@inl.gov*
 
 The HTR-10 is a small pebble-bed test reactor rated at a thermal power 
 of $10$ MWt intended as a stepping stone for the development of PBR 
