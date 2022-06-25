@@ -28,11 +28,11 @@ The first set of results for this model deal with the *htr-10-critical.i* input 
 | Griffin TDC-SPH-Diffusion | 1.00089 | 67.3 |
 
 Additionally, the flux distribution in the critical core is plotted in below. The effect of the upper cavity is clearly visible as the flux is almost flat within this region. The thermal flux peaks in the bottom conus are also visible.
- 
+
 !media /htr10/flux_critical_core.png
-    style=width:80%
-    id=htr10_flux
-    caption=Flux distribution in the critical core (axial centerline) [!citep](HTR-10Benchmark).
+   style=width:80%
+   id=htr10_flux
+   caption=Flux distribution in the critical core (axial centerline) [!citep](HTR-10Benchmark).
 
 ## *Full Core* Results
 
