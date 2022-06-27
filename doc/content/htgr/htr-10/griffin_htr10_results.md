@@ -52,7 +52,7 @@ The first *Full Core* benchmark problem is to compute the eigenvalues for the fu
 | TRIPOLI4 (France)  | 1.1474 | - | - | 
 | VSOP_PBMSR (SA) | 1.1286 | 1.1196 | 1.1047 | 
 
-The last *full core* problem looks at various control rod configurations and compares the results from Griffin against Serpent. The all rods out (ARO), all rods in (ARI) and one rod in (1RI) results for Diffusion and SPH corrected Diffusion are compared against the Serpent results in Table 3 below. In order to obtain these results the user needs to update the 'library_name' in the [GLobalParams] block to the appropriate libraries 'htr-10-full-ARO','htr-10-full-ARI', and 'htr-10-full-1RI' respectively.
+The last *full core* problem looks at various control rod configurations and compares the results from Griffin against Serpent. The all rods out (ARO), all rods in (ARI) and one rod in (1RI) results for Diffusion and SPH corrected Diffusion are compared against the Serpent results in [full_control_rods] below. In order to obtain these results the user needs to update the 'library_name' in the [GLobalParams] block to the appropriate libraries 'htr-10-full-ARO','htr-10-full-ARI', and 'htr-10-full-1RI' respectively.
 
 !table id=full_control_rods caption=Relative difference of Griffin computed eigenvalues (pcm) and reaction rates (%) with the Serpent solution for the *full core* with different rod configurations (ARO -all rods out, ARI - all rods in, and 1RI - one rod in) [!citep](HTR-10Benchmark)).
 | Configuration | Eigenvalue - $k_eff$ | Eigenvalue - $\Delta$(pcm) | Absorption - RMS  | Absorption - Max  | Generation - RMS	 | Generation - Max  |
@@ -66,11 +66,11 @@ The last *full core* problem looks at various control rod configurations and com
 | ARI  | 0.96145 | 74.1 | 0.2 | 0.51 | 0.09 | 0.16 | 
 | 1RI  | 1.10622 | 119.4 | 0.2 | 0.54 | 0.1 | 0.22 | 
 
-From Table 3 above, it's clear that the SPH Correct Diffusion method makes all the difference when it comes to accuracy against Serpent. With the SPH Correction, Griffin can match the eigenvalue and the Absorption and Generation rates calculated by Serpent with maximum errors down to half a percent. 
+From [full_control_rods] above, it's clear that the SPH Correct Diffusion method makes all the difference when it comes to accuracy against Serpent. With the SPH Correction, Griffin can match the eigenvalue and the Absorption and Generation rates calculated by Serpent with maximum errors down to half a percent. 
 
- A three-dimenionsonal rendering of the scalar flux in group 10 for the one rod in case is provided in Figure 2 below. The depression of the flux around the inserted control rod positioned just outside the core region is clearly visible. 
+ A three-dimenionsonal rendering of the scalar flux in group 10 for the one rod in case is provided in [1rodin] below. The depression of the flux around the inserted control rod positioned just outside the core region is clearly visible. 
 
-!media /htr10/one_rod_in_volumetric_res2.pdf
+!media /htr10/one_rod_in_volumetric_res2.png
       style=width:80%
       id=1rodin
       caption=Rendering of the scalar flux in group 10 (most thermal flux) for the one-rod in configuration. The depression of the flux around the inserted control rod positioned just outside the core is clearly visible..
