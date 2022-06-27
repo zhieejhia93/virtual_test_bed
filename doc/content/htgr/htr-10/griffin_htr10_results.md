@@ -20,7 +20,7 @@ If the user has access to Griffin built upon a working Moose Framework the follo
 The first set of results for this model deal with the *htr-10-critical.i* input file which is the initial criticality benchmark. Table 1 summarizes the results of Griffin using tensor diffusion coefficients (TDC) and super homogenization (SPH) compared against MCNP and Serpent using ENDFB-VI and Serpent using ENDFB-VII.r1. As can be seen in the table below, Griffin matches with the accepted Serpent solution very well. 
 
 !table id=critical_eigven_values caption=Eigenvalues computed with different codes for the initial critical configuration. (MCNP results obtained from [!citep](IRPhEP))
-| Code  | keff  | uncertainty rel. error (pcm)  |
+| Code  | $k_eff$  | uncertainty rel. error (pcm)  |
 | :- | :- | :- | :- |
 | MCNP (ENDFB-VI)  | 1.01190 | +/- 21 | 
 | Serpent (ENDFB-VI) | 1.01025 | +/- 5.1 |
@@ -36,26 +36,47 @@ Additionally, the flux distribution in the critical core is plotted in below. Th
 
 ## *Full Core* Results
 
-For the *Full Core* case, there are a multitude of different cross section and equivalence libraries that can be switched out in the *htr-10-full.i* in order to model the full htr-10 reactor at different temperatures and rod positions.  
+For the *Full Core* case, there are a multitude of different cross section and equivalence libraries that can be switched out in the *htr-10-full.i* in order to model the full htr-10 reactor at different temperatures and rod positions. These results are compared against Serpent and results listed in literature. 
 
-One of the first problems to benchmark against
+The first *Full Core* benchmark problem is to compute the eigenvalues for the full core at three different uniform core temperatures: 27, 120, and 250 degrees C (300, 393, and 523 degrees K respectively). The three different equivalence and cross section libraries that these results require come from the libraries 'htr-10-full-ARO','htr-10-393K', and 'htr-10-523K'. These can be changed in the [Globalparams] block by changing the 'library_name' to the appropriate library for the different temperatures. The results for this study are shown in Table 2 below.     
 
-After the steady-state calculations, a Pressurized Loss of Forced Cooling (PLOFC) is performed using the following event sequence:
+!table id=full_eigven_values caption=Eigenvalues at three temperatures computed with various codes for the *full core*. The Griffin computed eigenvalues are obtained with SPH corrected diffusion. (Non-INL calculations cited at [!citep](TECDOC))
+| Code  | $k_eff$ (27 C)  | $k_eff$ (120 C) | $k_eff$ (250 C) |
+| :- | :- | :- | :- |
+| Serpent (INL)  | 1.12242 +/- 13 | 1.11068 +/- 20 | 1.09298 +/- 14 | 
+| Griffin (INL)  | 1.12242 | 1.11061 | 1.09249 | 
+| VSOP (China)  | 1.1358 | 1.1262 | 1.1111 | 
+| MCNP4 (China)  | 1.1381 | - | - | 
+| VSOP 2-D (Germany)  | 1.1468 | 1.1334 | 1.1160 | 
+| VSOP 3-D (Germany)  | 1.1368 | 1.1232 | 1.1054 | 
+| TRIPOLI4 (France)  | 1.1474 | - | - | 
+| VSOP_PBMSR (SA) | 1.1286 | 1.1196 | 1.1047 | 
 
-* 0-13s: A reduction in reactor inlet coolant mass flow rate from the nominal 192.7 kg/s to 0.0 kg/s over 13 seconds. The mass flow ramp is assumed linear; a reduction in reactor helium outlet pressure from the nominal 90 bar to 60 bar in 13 seconds.
+The last *full core* problem looks at various control rod configurations and compares the results from Griffin against Serpent. The all rods out (ARO), all rods in (ARI) and one rod in (1RI) results for Diffusion and SPH corrected Diffusion are compared against the Serpent results in Table 3 below. In order to obtain these results the user needs to update the 'library_name' in the [GLobalParams] block to the appropriate libraries 'htr-10-full-ARO','htr-10-full-ARI', and 'htr-10-full-1RI' respectively.
 
-* 13-16s: All control rods are fully inserted over 3 seconds to SCRAM the reactor.
+!table id=full_control_rods caption=Relative difference of Griffin computed eigenvalues (pcm) and reaction rates (%) with the Serpent solution for the *full core* with different rod configurations (ARO -all rods out, ARI - all rods in, and 1RI - one rod in) [!citep](HTR-10Benchmark)).
+| Configuration | Eigenvalue - $k_eff$ | Eigenvalue - $\Delta$(pcm) | Absorption - RMS  | Absorption - Max  | Generation - RMS	 | Generation - Max  |
+| :- | :- | :- | :- | :- | :- | :- |
+| Diffusion  |  |  |  |  |  |  | 
+| ARO  | 1.15096 | 2542.7 | 20.6 | 136.19 | 6.6 | 13.3 | 
+| ARI  | 0.97094 | 1061.3 | 24.6 | 158.07 | 10.4 | 21.6 | 
+| 1RI  | 1.13118 | 2378.5 | 21.3 | 161.9 | 6.97 | 14.6 | 
+| SPH Corrected Diffusion  |  |  |  |  |  |  |
+| ARO  | 1.12347 | 93.9 | 0.2 | 0.5 | 0.1 | 0.19 | 
+| ARI  | 0.96145 | 74.1 | 0.2 | 0.51 | 0.09 | 0.16 | 
+| 1RI  | 1.10622 | 119.4 | 0.2 | 0.54 | 0.1 | 0.22 | 
 
-* 16-180,000s: No change in input parameters (50hr).
+From Table 3 above, it's clear that the SPH Correct Diffusion method makes all the difference when it comes to accuracy against Serpent. With the SPH Correction, Griffin can match the eigenvalue and the Absorption and Generation rates calculated by Serpent with maximum errors down to half a percent. 
 
-!media /pbmr/PBMR400TransientFuel.png
-      style=width:50%
-      id=fuelTransient
-      caption=Average fuel temperature over time during the PLOFC transient between various codes.
+ A three-dimenionsonal rendering of the scalar flux in group 10 for the one rod in case is provided in Figure 2 below. The depression of the flux around the inserted control rod positioned just outside the core region is clearly visible. 
+
+!media /htr10/one_rod_in_volumetric_res2.pdf
+      style=width:80%
+      id=1rodin
+      caption=Rendering of the scalar flux in group 10 (most thermal flux) for the one-rod in configuration. The depression of the flux around the inserted control rod positioned just outside the core is clearly visible..
 
 !media /pbmr/PBMR400TransientModerator.png
       style=width:50%
       id=moderatorTransient
       caption=Average moderator temperature over time during the PLOFC transient between various codes.
 
-The results from this transient can be found in [fuelTransient] and [moderatorTransient]. Both moderator and fuel average temperature start to increase after the reactor shutdown since there is no more active flow cooling the reactor. The only mechanism for heat removal is the less efficient heat transfer through the outer reflector/barrel/RPC/cavity/RCCS. The temperatures reach their maximum around 100,000s (~28hr) and then start to decrease thanks to a reduction of the generated decay heat. As shown in the figure above, the fuel average temperature and the moderator average temperature results are in the range of the other participant solutions confirming that the Pronghorn/Griffin coupled model is consistent with legacy codes developed explicity for PBRs.
