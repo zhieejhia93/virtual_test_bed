@@ -17,9 +17,9 @@ If the user has access to Griffin built upon a working Moose Framework the follo
 
 ## *Initial Critical* Core Results 
 
-The first set of results for this model deal with the *htr-10-critical.i* input file which is the initial criticality benchmark. Table 1 summarizes the results of Griffin using tensor diffusion coefficients (TDC) and super homogenization (SPH) compared against MCNP and Serpent using ENDFB-VI and Serpent using ENDFB-VII.r1. As can be seen in the table below, Griffin matches with the accepted Serpent solution very well. 
+The first set of results for this model deal with the *htr-10-critical.i* input file which is the initial criticality benchmark. [critical_eigen_values] summarizes the results of Griffin using tensor diffusion coefficients (TDC) and super homogenization (SPH) compared against MCNP and Serpent using ENDFB-VI and Serpent using ENDFB-VII.r1. As can be seen in the table below, Griffin matches with the accepted Serpent solution very well. 
 
-!table id=critical_eigven_values caption=Eigenvalues computed with different codes for the initial critical configuration. (MCNP results obtained from [!citep](IRPhEP))
+!table id=critical_eigen_values caption=Eigenvalues computed with different codes for the initial critical configuration. (MCNP results obtained from [!citep](IRPhEP))
 | Code  | $k_eff$  | uncertainty rel. error (pcm)  |
 | :- | :- | :- | :- |
 | MCNP (ENDFB-VI)  | 1.01190 | +/- 21 | 
@@ -27,7 +27,7 @@ The first set of results for this model deal with the *htr-10-critical.i* input 
 | Serpent (ENDFB-VII.r1) | 1.00023 | +/- 2.3 |
 | Griffin TDC-SPH-Diffusion | 1.00089 | 67.3 |
 
-Additionally, the flux distribution in the critical core is plotted in below. The effect of the upper cavity is clearly visible as the flux is almost flat within this region. The thermal flux peaks in the bottom conus are also visible.
+Additionally, the flux distribution in the critical core is plotted in [htr10_flux] below. The effect of the upper cavity is clearly visible as the flux is almost flat within this region. The thermal flux peaks in the bottom conus are also visible.
 
 !media /htr10/flux_critical_core.png
    style=width:80%
@@ -38,9 +38,9 @@ Additionally, the flux distribution in the critical core is plotted in below. Th
 
 For the *Full Core* case, there are a multitude of different cross section and equivalence libraries that can be switched out in the *htr-10-full.i* in order to model the full htr-10 reactor at different temperatures and rod positions. These results are compared against Serpent and results listed in literature. 
 
-The first *Full Core* benchmark problem is to compute the eigenvalues for the full core at three different uniform core temperatures: 27, 120, and 250 degrees C (300, 393, and 523 degrees K respectively). The three different equivalence and cross section libraries that these results require come from the libraries 'htr-10-full-ARO','htr-10-393K', and 'htr-10-523K'. These can be changed in the [Globalparams] block by changing the 'library_name' to the appropriate library for the different temperatures. The results for this study are shown in Table 2 below.     
+The first *Full Core* benchmark problem is to compute the eigenvalues for the full core at three different uniform core temperatures: 27, 120, and 250 degrees C (300, 393, and 523 degrees K respectively). The three different equivalence and cross section libraries that these results require come from the libraries 'htr-10-full-ARO','htr-10-393K', and 'htr-10-523K'. These can be changed in the [Globalparams] block by changing the 'library_name' to the appropriate library for the different temperatures. The results for this study are shown in [full_eigen_values] below. 
 
-!table id=full_eigven_values caption=Eigenvalues at three temperatures computed with various codes for the *full core*. The Griffin computed eigenvalues are obtained with SPH corrected diffusion. (Non-INL calculations cited at [!citep](TECDOC))
+!table id=full_eigen_values caption=Eigenvalues at three temperatures computed with various codes for the *full core*. The Griffin computed eigenvalues are obtained with SPH corrected diffusion. (Non-INL calculations cited at [!citep](TECDOC))
 | Code  | $k_eff$ (27 C)  | $k_eff$ (120 C) | $k_eff$ (250 C) |
 | :- | :- | :- | :- |
 | Serpent (INL)  | 1.12242 +/- 13 | 1.11068 +/- 20 | 1.09298 +/- 14 | 
