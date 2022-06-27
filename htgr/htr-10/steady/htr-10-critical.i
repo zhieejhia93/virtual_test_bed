@@ -30,7 +30,7 @@
 [GlobalParams]
   coupled_flux_groups = 'sflux_g0 sflux_g1 sflux_g2 sflux_g3 sflux_g4 sflux_g5 sflux_g6 sflux_g7 sflux_g8 sflux_g9'
   scalar_flux = 'sflux_g0 sflux_g1 sflux_g2 sflux_g3 sflux_g4 sflux_g5 sflux_g6 sflux_g7 sflux_g8 sflux_g9'
-  library_file = 'xs/htr-10-critical.xml'
+  library_file = '../data/xs/htr-10-XS.xml'
   library_name = 'htr-10-critical'
   grid_names = 'default'
   grid = '1'
@@ -45,7 +45,7 @@
 [Mesh]
   [./fmg]
     type = FileMeshGenerator
-    file = mesh/htr-10-critical-a-rev6.e
+    file = '../data/mesh/htr-10-critical-a-rev6.e'
     exodus_extra_element_integers = 'eqv_id material_id'
   [../]
   [./eqvid]
@@ -91,7 +91,7 @@
   compute_factors = false
   equivalence_grid_names = 'default'
   equivalence_grid = '1'
-  equivalence_library = 'sph/htr-10-critical-Diff-SPH.xml'
+  equivalence_library = '../data/sph/htr-10-Diff-SPH.xml'
 []
 
 # ==============================================================================

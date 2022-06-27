@@ -73,10 +73,12 @@ From [full_control_rods] above, it's clear that the SPH Correct Diffusion method
 !media /htr10/one_rod_in_volumetric_res2.png
       style=width:80%
       id=1rodin
-      caption=Rendering of the scalar flux in group 10 (most thermal flux) for the one-rod in configuration. The depression of the flux around the inserted control rod positioned just outside the core is clearly visible..
+      caption=Rendering of the scalar flux in group 10 (most thermal flux) for the one-rod in configuration. The depression of the flux around the inserted control rod positioned just outside the core is clearly visible [!citep](HTR-10Benchmark)).
 
-!media /pbmr/PBMR400TransientModerator.png
-      style=width:50%
-      id=moderatorTransient
-      caption=Average moderator temperature over time during the PLOFC transient between various codes.
+Lastly, all three rod configurations can be examined in [rodcomparison] which is a slice at z = 270 cm (core region) for 1RI, ARI, and ARO. The line plots represent the flux along the light green line shown on the 1RI 2D plot for each of the configurations. The ARO and ARI have symmetric solutions whereas the 1RI has the asymmetric solution due to only one region where the flux is depreciated due to the insertion of only one control rod. The thermal peak at the reflector interface is present for the ARO configuration and still slightly visible for the 1RI along the line out plot as well.  
+
+!media /htr10/comparison_core_level_slices_flux10.jpg
+      style=width:80%
+      id=rodcomparison
+      caption=Rendering of the scalar fluxes in group 10 at z = 270 cm (lower core level) for all three rod configurations: one rod in (1RI), all rods in (ARI), and all rods out (ARO) along with traces of the scalar fluxes along a line intersecting the inserted control rod in the 1RI configuration [!citep](HTR-10Benchmark)).
 

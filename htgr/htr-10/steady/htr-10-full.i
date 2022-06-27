@@ -32,7 +32,7 @@
   scalar_flux = 'sflux_g0 sflux_g1 sflux_g2 sflux_g3 sflux_g4 sflux_g5 sflux_g6 sflux_g7 sflux_g8 sflux_g9'
   #Library options include xs/htr-10-full-1RI.xml, xs/htr-10-full-393K.xml, xs/htr-10-full-523K.xml,
   # xs/htr-10-full-ARI.xml, and xs/htr-10-full-ARO.xml
-  library_file = 'xs/htr-10-full-ARO.xml'
+  library_file = '../data/xs/htr-10-XS.xml'
   library_name = 'htr-10-full-ARO'
   grid = '1'
   grid_names = 'default'
@@ -47,7 +47,7 @@
 [Mesh]
   [./fmg]
     type = FileMeshGenerator
-    file = mesh/htr-10-full-a-rev3.e
+    file = '../data/mesh/htr-10-full-a-rev3.e'
     exodus_extra_element_integers = 'eqv_id material_id'
   [../]
   [./eqvid]
@@ -94,7 +94,7 @@
   compute_factors = false
   equivalence_grid_names = 'default'
   equivalence_grid = '1'
-  equivalence_library = 'sph/htr-10-full-Diff-SPH-ARO.xml'
+  equivalence_library = '../data/sph/htr-10-Diff-SPH.xml'
 []
 
 # ==============================================================================
