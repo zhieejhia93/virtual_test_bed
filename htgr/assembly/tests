@@ -1,24 +1,15 @@
 [Tests]
-  [generate_mesh]
-    type = RunApp
-    executable_pattern = 'cardinal*'
-    input = 'common_input.i solid.i'
-    cli_args = '--mesh-only'
-    working_directory = 'meshes'
-  []
   [syntax_openmc]
     type = RunApp
-    input = 'common_input.i openmc.i'
+    input = 'openmc.i'
     check_input = true
     executable_pattern = 'cardinal*'
-    prereq = generate_mesh
   []
   [syntax_conduction]
     type = RunApp
     input = 'solid.i'
     check_input = true
     executable_pattern = 'cardinal*'
-    prereq = generate_mesh
   []
   [syntax_thm]
     type = RunApp
@@ -27,27 +18,23 @@
     executable_pattern = 'cardinal*|thermal_hydraulics*'
   []
 
-  [run_multiphysics]
+  [run_openmc]
     type = RunApp
-    input = 'common_input.i openmc.i'
-    cli_args = "Executioner/num_steps=2"
+    input = 'openmc.i'
+    cli_args = "MultiApps/active='' Transfers/active='' Executioner/num_steps=2"
     executable_pattern = 'cardinal*'
-    prereq = 'syntax_openmc'
-    min_parallel = 8
   []
   [run_conduction]
     type = RunApp
     check_input = True
     input = 'solid.i'
     executable_pattern = 'cardinal*'
-    prereq = 'syntax_conduction'
   []
   [run_thm]
     type = RunApp
     input = 'thm.i'
     check_input = true
     executable_pattern = 'cardinal*|thermal_hydraulics*'
-    prereq = 'syntax_thm'
   []
 
   # Check input generation
