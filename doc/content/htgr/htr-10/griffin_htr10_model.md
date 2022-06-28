@@ -382,3 +382,6 @@ cross section library.
 !listing htgr/htr-10/steady/htr-10-full.i
          block=GlobalParams
 
+## Acknowledgments
+
+This model description section is summaried from [!citep](HTR-10Benchmark) and prepared for the VTB by Thomas Folk.

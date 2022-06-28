@@ -123,3 +123,7 @@ visible for the 1RI along the line out plot as well.
       style=width:80%
       id=rodcomparison
       caption=Rendering of the scalar fluxes in group 10 at z = 270 cm (lower core level) for all three rod configurations: one rod in (1RI), all rods in (ARI), and all rods out (ARO) along with traces of the scalar fluxes along a line intersecting the inserted control rod in the 1RI configuration [!citep](HTR-10Benchmark)).
+
+## Acknowledgments
+
+This results description section is summaried from [!citep](HTR-10Benchmark) and prepared for the VTB by Samuel Walker.
