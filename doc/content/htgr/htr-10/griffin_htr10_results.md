@@ -126,4 +126,4 @@ visible for the 1RI along the line out plot as well.
 
 ## Acknowledgments
 
-This results description section is summaried from [!citep](HTR-10Benchmark) and prepared for the VTB by Samuel Walker.
+This results description section is summarized from [!citep](HTR-10Benchmark) and prepared for the VTB by Samuel Walker.

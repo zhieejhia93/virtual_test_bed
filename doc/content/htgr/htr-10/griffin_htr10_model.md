@@ -384,4 +384,4 @@ cross section library.
 
 ## Acknowledgments
 
-This model description section is summaried from [!citep](HTR-10Benchmark) and prepared for the VTB by Thomas Folk.
+This model description section is summarized from [!citep](HTR-10Benchmark) and prepared for the VTB by Thomas Folk.
