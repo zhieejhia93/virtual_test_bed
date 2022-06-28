@@ -106,7 +106,7 @@ The full input block can be found below.
          block=Mesh
 
 The HTR geometry is input into CUBIT, an external code developed at 
-Sandia Nationa Labs, via a CAD model to generate the computation mesh.
+Sandia National Labs, via a CAD model to generate the computation mesh.
 An internal INL tool is used to post-process the mesh to ensure
 consistency with the Serpent generated multi-group cross section
 library (i.e. material regions and equivalent regions).
@@ -135,7 +135,7 @@ The deletion of the bricks requires the use of the
 [!style color=orange](BlockDeletionGenerator) type.
 Here, we select the blocks "3 4 5" that represent the
 boronated bricks in the original mesh.
-A simple way to identifiy the block ids is to open the mesh file 
+A simple way to identify the block ids is to open the mesh file 
 `HTR10-critical-c-rev2.e` in an Exodus supported visualization tool 
 (i.e. ParaView).
 Next, we define the new top, bottom, and radial boundary.
@@ -174,7 +174,7 @@ from the equivalence library.
 These variables define the SPH factor parameterization.
 In this example, the cross section library consists of only one 
 state point, defined with the name "default" and grid "1". 
-These variable names are on the equivalance library xml file.
+These variable names are on the equivalence library xml file.
 The "diff", short for diffusion, system will be defined later.
 
 !listing htgr/htr-10/steady/htr-10-critical.i 
@@ -187,7 +187,7 @@ solution variables (i.e. scalar flux). An AuxKernel is a
 procedure that uses the solution variable to compute
 the AuxVariable (i.e. reaction rate).
 
-There are two AuxVariables that are defined in this model;
+There are two AuxVariables that are defined in this model:
 the absorption reaction rate and the neutron production
 reaction rate.
 
@@ -234,7 +234,7 @@ In a similar process, non-fissile materials are defined in the
 next sub-block. 
 These could be any regions that have non-fissile materials such 
 as a reflector, structural materials, etc. 
-The last sub-block is for materials with a tensor diffussion
+The last sub-block is for materials with a tensor diffusion
 coefficient (TDC). 
 
 !listing htgr/htr-10/steady/htr-10-critical.i 
@@ -255,7 +255,7 @@ desired name for the integrated power post-processor.
 Likewise, the [!style color=red](power_scaling_postprocessor) 
 sets the desired name for the power scaling post-processor. 
 Lastly, the family and order parameters are the polynomial 
-representations  of the power density corresponding to the 
+representations of the power density corresponding to the 
 underlying FEM.
 
 !listing htgr/htr-10/steady/htr-10-critical.i 
@@ -306,7 +306,7 @@ of the solve.
 To use this solver, the [!style color=red](constant_matrices) 
 parameter must be set to "true".
 There are a number of optional arguments that may also be included.
-For example, we define a few petsc options and non-linear solver
+For example, we define a few PETSc options and non-linear solver
 tolerances.
 
 !listing htgr/htr-10/steady/htr-10-critical.i 
@@ -325,7 +325,7 @@ type and the power density variable we created earlier,
 The fissile blocks must be identified to compute the power density with
 [!style color=red](block).
 Integral properties such as the rate of neutron production, rate of
-neutron absorption, and rate of neutron leakge are integrated over each
+neutron absorption, and rate of neutron leakage are integrated over each
 FEM element in the next two sub-blocks.
 The remaining sub-blocks define the total generation with a 
 [!style color=orange](FluxRxnIntegral) type.
@@ -368,7 +368,7 @@ features that were not discussed previously.
 
 In this model, there are several multi-group cross
 section libraries to choose from.
-Each library contains a unique statepoint at which 
+Each library contains a unique state point at which 
 Serpent generated homogenized cross sections.
 The available options are all rods in (ARI), 
 all rods out (ARO), one rod in (1RI), and temperatures
