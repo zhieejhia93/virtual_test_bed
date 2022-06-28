@@ -35,8 +35,8 @@ pump_force = -20000. # [N / m^3]
   [hx_top]
     type = ParsedGenerateSideset
     combinatorial_geometry = 'y > 0'
-    included_subdomain_ids = '3'
-    included_neighbor_ids = '1'
+    included_subdomains = '3'
+    included_neighbors = '1'
     fixed_normal = true
     normal = '0 1 0'
     new_sideset_name = 'hx_top'
@@ -161,7 +161,7 @@ pump_force = -20000. # [N / m^3]
     type = IterationAdaptiveDT
     optimal_iterations = 10
     dt = 0.3
-    timestep_limiting_postprocessor = 1
+    timestep_limiting_postprocessor = 'dt_limit'
   []
 
   # Solver parameters
@@ -182,6 +182,7 @@ pump_force = -20000. # [N / m^3]
 
 [Outputs]
   csv = true
+  hide = 'dt_limit'
   [restart]
     type = Exodus
     execute_on = 'final'
@@ -209,5 +210,9 @@ pump_force = -20000. # [N / m^3]
     vel_x = vel_x
     vel_y = vel_y
     advected_quantity = ${rho}
+  []
+  [dt_limit]
+    type = Receiver
+    default = 1
   []
 []
