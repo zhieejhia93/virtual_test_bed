@@ -111,14 +111,14 @@ power_density = ${fparse total_power / model_vol / 258 * 236}  # adjusted using 
     type = ParsedGenerateSideset
     combinatorial_geometry = 'abs(y) < 1e-10'
     new_sideset_name = 'OR_horizontal_bottom'
-    included_subdomains = '6'
+    included_subdomain_ids = '6'
     input = barrel
   []
   [OR_outlet]
     type = ParsedGenerateSideset
     combinatorial_geometry = 'abs(y - 5.3125) < 1e-10'
     new_sideset_name = 'OR_horizontal_top'
-    included_subdomains = '6'
+    included_subdomain_ids = '6'
     input = OR_inlet
   []
 []
@@ -161,12 +161,12 @@ power_density = ${fparse total_power / model_vol / 258 * 236}  # adjusted using 
     compressibility = 'incompressible'
     porous_medium_treatment = true
     add_energy_equation = true
-    boussinesq_approximation = true
+    # boussinesq_approximation = true
     block = ${blocks_fluid}
 
     # Material properties
-    # density should be explicitly defined as constant
-    density = ${rho_fluid}
+    # TODO remove more rho_fluid
+    density = 'rho' #${rho_fluid}
     dynamic_viscosity = 'mu'
     thermal_conductivity = '0' #kappa'
     specific_heat = 'cp'
@@ -203,8 +203,8 @@ power_density = ${fparse total_power / model_vol / 258 * 236}  # adjusted using 
 
     # Porous flow parameters
     ambient_convection_blocks = ${blocks_pebbles}
-    ambient_convection_alpha = 'alpha'
-    ambient_temperature = 'T_solid'
+    ambient_convection_alpha = 'alpha alpha'
+    ambient_temperature = 'T_solid T_solid'
 
     # Friction in porous media
     friction_types = 'darcy forchheimer'
