@@ -33,7 +33,7 @@ The upper part of the core during the initial critical contains a mix of
 16,890 fuel and dummy graphite pebbles with a ratio of 57 : 43,
 while the lower part of the core only contains dummy pebbles.
 The benchmark report assumes a uniform packing
-fraction of 0:61 throughout the whole core.
+fraction of 0.61 throughout the whole core.
 
 In addition to the *initial critical* configuration,
 Ref.[!citep](TECDOC) describes the *full core* configuration
