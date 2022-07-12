@@ -277,14 +277,16 @@ num_layers_for_THM = 50      # number of elements in the THM model; for the conv
     type = MultiAppInterpolationTransfer
     source_variable = T
     variable = solid_temp
-    from_multi_app = bison
+    direction = from_multiapp
+    multi_app = bison
   []
   [heat_flux_to_openmc]
     type = MultiAppNearestNodeTransfer
     fixed_meshes = true
     source_variable = flux
     variable = flux
-    from_multi_app = bison
+    direction = from_multiapp
+    multi_app = bison
     source_boundary = 'fluid_solid_interface'
     target_boundary = 'fluid_solid_interface'
     from_postprocessors_to_be_preserved = flux_integral
