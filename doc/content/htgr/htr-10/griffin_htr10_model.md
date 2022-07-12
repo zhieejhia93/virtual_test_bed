@@ -3,7 +3,7 @@
 *Contact: Javier Ortensi, Javier.Ortensi@inl.gov*
 
 The HTR-10 is a small pebble-bed test reactor rated at a thermal power
-of $10$ MWt intended as a stepping stone for the development of PBR
+of $10$ MWt intended as a steppingstone for the development of PBR
 technology in China.
 The HTR-10 is located at the Institute of Nuclear and New Energy
 Technology (INET) and achieved initial criticality on
@@ -22,7 +22,7 @@ The following discussion of the reactor geometry and the benchmark
 based thereon are taken from [!citep](IRPhEP).
 This reference discusses the *initial critical*
 core configuration of the HTR-10.
-Overall, the neutronically relevant core, reflector and shielding
+Overall, the relevant core for the neutronics, reflector and shielding
 regions (everything inside of the boronated carbon bricks and
 carbon bricks in [htr10_geom]) are 6.1 meters tall and have a
 radius of 1.9 meters; the core containing the pebble bed is
@@ -50,7 +50,7 @@ pebbles in the upper core region.
 # Griffin Model
 
 Griffin is used to model the neutronics of the HTR. This section
-will walk-through the input files for the *initial critical*
+will present and describe the input files for the *initial critical*
 and *full* cores.
 
 ## *Initial Critical* Core
@@ -60,7 +60,7 @@ shown below.
 
 !listing htgr/htr-10/steady/htr-10-critical.i
 
-In the following sections, we will walk-through each of
+In the following sections, we will discuss each of
 the input blocks.
 
 ### Model Parameters
@@ -69,28 +69,27 @@ Model parameters are specified in this block.
 This could include the reactor state point (fuel temperature,
 coolant temperature/density, etc.) or reactor
 power level.
-The cross section library contains only
-one state point so it is not defined here.
+The cross-section library contains only
+one state point, so it is not defined here.
 
 ### Global Parameters
 
-Global paremeters are parameters that may be referenced
+Global parameters are parameters that may be referenced
 throughout the input file.
 This block is user specific with the purpose
 to simplify repeated variable entries.
 However, be careful to not override a default parameter
 option in a later block without meaning to.
 
-In regards to the multi-group cross section file, we define
+Regarding the multi-group cross section file, we define
 the library name and file location.
-In addition, the cross section parameterization on the xml file
+In addition, the cross-section parameterization on the xml file
 is set.
-We also define the materials as a "pseudo" mixture with
-a density of 1, referring to the homogenized cross
-sections from Serpent.
+Macroscopic cross sections are always defined with the "pseudo"
+denomination and a number density value of 1.
 
 If these definitions do not make sense now, we will
-walk-through their uses and meanings in the subsequent
+clarify their uses and meanings in the subsequent
 blocks.
 
 
@@ -109,7 +108,7 @@ The HTR geometry is input into CUBIT, an external code developed at
 Sandia National Labs, via a CAD model to generate the computation mesh.
 An internal INL tool is used to post-process the mesh to ensure
 consistency with the Serpent generated multi-group cross section
-library (i.e. material regions and equivalent regions).
+library (i.e., material regions and equivalent regions).
 The resulting output is an Exodus file that can be read by MOOSE
 using the [!style color=orange](FileMeshGenerator) type.
 We need to directly specify the ids on the mesh using
@@ -128,7 +127,7 @@ type by defining the "eqv_id" as the source and
 
 Next, we need to make some modifications to the mesh.
 In particular, we want to delete non-neutronics relevant
-blocks on the original mesh (i.e. the boronated bricks).
+blocks on the original mesh (i.e., the boronated bricks).
 This can be performed in two steps: 1) delete the boronated
 bricks and 2) define the new boundary.
 The deletion of the bricks requires the use of the
@@ -137,7 +136,7 @@ Here, we select the blocks "3 4 5" that represent the
 boronated bricks in the original mesh.
 A simple way to identify the block ids is to open the mesh file
 `HTR10-critical-c-rev2.e` in an Exodus supported visualization tool
-(i.e. ParaView).
+(i.e., ParaView).
 Next, we define the new top, bottom, and radial boundary.
 The radial boundary or `[./sideset_side]`, in the model,
 is given the [!style color=orange](ParsedGenerateSideset) type.
@@ -160,19 +159,17 @@ is the sequential order of the named sub-blocks `[./*]`.
 
 ### Equivalence
 
-Equivalent cross sections are handled in the `[Equivalent]` block.
-Super homogenization (SPH) factors are generated in Serpent to
-correct homogenization errors and preserve the reaction rates
-of the heterogenous solution.
+The Equivalence theory block/action is used to compute or apply
+equivalence factors. In this case, Super homogenization factors are applied.
 Griffin also supports the use of discontinuity factors.
 The equivalence library is first defined with
 [!style color=red](equivalance_library) which is an xml file
 generated by the ISOXML pre-processing code.
-The [!style color=red](equivalence_grid_names) and
+Both the [!style color=red](equivalence_grid_names) and the
 [!style color=red](equivalence_grid) are then specified with values
 from the equivalence library.
 These variables define the SPH factor parameterization.
-In this example, the cross section library consists of only one
+In this example, the cross-section library consists of only one
 state point, defined with the name "default" and grid "1".
 These variable names are on the equivalence library xml file.
 The "diff", short for diffusion, system will be defined later.
@@ -183,9 +180,9 @@ The "diff", short for diffusion, system will be defined later.
 ### AuxVariables and AuxKernels
 
 AuxVariables are variables that can be derived from the
-solution variables (i.e. scalar flux). An AuxKernel is a
+solution variables (i.e., scalar flux). An AuxKernel is a
 procedure that uses the solution variable to compute
-the AuxVariable (i.e. reaction rate).
+the AuxVariable (i.e., reaction rate).
 
 There are two AuxVariables that are defined in this model:
 the absorption reaction rate and the neutron production
@@ -301,11 +298,11 @@ We also specify to solve with a Preconditioned Jacobian Free
 Newton Krylov Matrix Only method as shown by setting
 [!style color=red](solve_type) equal to "PJFNKMO".
 The Matrix Only method forces the solver to not update
-material properties (i.e. cross sections) in the linear iterations
+material properties (i.e., cross sections) in the linear iterations
 of the solve.
 To use this solver, the [!style color=red](constant_matrices)
 parameter must be set to "true".
-There are a number of optional arguments that may also be included.
+There are several optional arguments that may also be included.
 For example, we define a few PETSc options and non-linear solver
 tolerances.
 
@@ -361,7 +358,7 @@ shown below.
 !listing htgr/htr-10/steady/htr-10-full.i
 
 The input file to the *full* core is similar to that of the
-*initial critical* core. Still, we will walk-through any
+*initial critical* core. Still, we will examine any
 features that were not discussed previously.
 
 ### Global Parameters
@@ -373,11 +370,11 @@ Serpent generated homogenized cross sections.
 The available options are all rods in (ARI),
 all rods out (ARO), one rod in (1RI), and temperatures
 at 393K and 523K.
-These cross section libraries are in the "xs" folder.
+These cross-section libraries are in the "xs" folder.
 
 If equivalence factors are to be used, make sure to select
 a library in the "sph" folder that is consistent with the
-cross section library.
+cross-section library.
 
 !listing htgr/htr-10/steady/htr-10-full.i
          block=GlobalParams
